@@ -8,18 +8,12 @@ import { Connection } from 'typeorm'
 import { Human } from '../human/human.entity'
 import { HumanModule } from '../human/human.module'
 import { APP_PIPE } from '@nestjs/core';
+import { DbModule } from '../db/db.module'
 
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: './data/db.sqlite',
-      entities: [Human],
-      autoLoadEntities: true,
-      synchronize: true,
-      logging: true,
-    }),
+    DbModule,
     HumanModule,
   ],
   controllers: [AppController, HumanController],
