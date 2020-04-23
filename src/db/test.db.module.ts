@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Human } from '../human/human.entity'
+import { Budget } from '../budget/budget.entity'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 
 @Module({
@@ -14,7 +14,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
         username: configService.get<string>('postgreSqlDatabase.testUsername'),
         password: configService.get<string>('postgreSqlDatabase.testPassword'),
         database: configService.get<string>('postgreSqlDatabase.testDatabase'),
-        entities: [Human],
+        entities: [Budget],
         synchronize: true,
         logging: true,
       }),

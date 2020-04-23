@@ -1,10 +1,10 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { HumanController } from '../human/human.controller';
+import { BudgetController } from '../budget/budget.controller';
 import { AppService } from './app.service';
-import { HumanService } from '../human/human.service';
+import { BudgetService } from '../budget/budget.service';
 import { Connection } from 'typeorm'
-import { HumanModule } from '../human/human.module'
+import { BudgetModule } from '../budget/budget.module'
 import { APP_PIPE } from '@nestjs/core';
 import { DbModule } from '../db/db.module'
 import { ConfigModule } from '@nestjs/config';
@@ -14,16 +14,16 @@ import Configuration from './config/configuration'
 @Module({
   imports: [
     DbModule,
-    HumanModule,
+    BudgetModule,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [Configuration]
     }),
   ],
-  controllers: [AppController, HumanController],
+  controllers: [AppController, BudgetController],
   providers: [
     AppService,
-    HumanService,
+    BudgetService,
     {
       provide: APP_PIPE,
       useClass: ValidationPipe
