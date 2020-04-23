@@ -1,10 +1,13 @@
+import { ExpenseType } from './budget.entity'
 interface IBudget {
-  id?: number,
+  id?: string,
   name: string,
   description: string,
   amount: number,
-  type: string,
-  expenseType: string,
+  expenseType: ExpenseType,
+  transactionTime: Date,
+  createdAt?: Date,
+  updatedAt?: Date,
 }
 
 export default IBudget;

@@ -1,22 +1,38 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, Generated, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+
+export enum ExpenseType {
+  INCOME = 'INCOME',
+  EXIT = 'EXIT',
+}
 
 @Entity()
 export class Budget {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn()
+  @Generated('uuid')
+  id: string;
 
-  @Column('text')
+  @Column('varchar')
   name: string;
 
   @Column('text')
   description: string;
 
-  @Column('real')
+  @Column('float')
   amount: number;
 
-  @Column('text')
-  type: string;
+  @Column({
+    type: 'enum',
+    enum: ExpenseType,
+    default: ExpenseType.INCOME
+  })
+  expense_type: ExpenseType;
 
-  @Column('text')
-  expenseType: string;
+  @Column('time')
+  transaction_time: Date
+
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date
 }
