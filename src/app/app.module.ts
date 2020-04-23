@@ -9,12 +9,18 @@ import { Human } from '../human/human.entity'
 import { HumanModule } from '../human/human.module'
 import { APP_PIPE } from '@nestjs/core';
 import { DbModule } from '../db/db.module'
+import { ConfigModule } from '@nestjs/config';
+import Configuration from './config/configuration'
 
 
 @Module({
   imports: [
     DbModule,
     HumanModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [Configuration]
+    }),
   ],
   controllers: [AppController, HumanController],
   providers: [
@@ -28,4 +34,8 @@ import { DbModule } from '../db/db.module'
 })
 export class AppModule {
   constructor(private connection: Connection) {}
+
+  getHi() {
+    console.log('hola')
+  }
 }

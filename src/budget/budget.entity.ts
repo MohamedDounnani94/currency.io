@@ -23,16 +23,26 @@ export class Budget {
   @Column({
     type: 'enum',
     enum: ExpenseType,
-    default: ExpenseType.INCOME
+    default: ExpenseType.INCOME,
+    name: 'expense_type'
   })
-  expense_type: ExpenseType;
+  expenseType: ExpenseType;
 
-  @Column('time')
-  transaction_time: Date
+  @Column({
+    type: 'time',
+    name: 'transaction_time'
+  })
+  transactionTime: Date
 
-  @CreateDateColumn({ type: 'timestamp' })
-  created_at: Date
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'created_at'
+  })
+  createdAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp' })
-  updated_at: Date
+  @UpdateDateColumn({
+    type: 'timestamp',
+    name: 'updated_at'
+  })
+  updatedAt: Date
 }

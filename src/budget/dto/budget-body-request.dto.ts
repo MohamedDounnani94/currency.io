@@ -1,5 +1,6 @@
 import { IsNotEmpty, IsString, IsInt } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger';
+import { ExpenseType } from '../budget.entity'
 
 export default class BudgetBodyRequestDto {
 
@@ -28,20 +29,16 @@ export default class BudgetBodyRequestDto {
   @IsInt()
   amount: number;
 
-
-  @ApiProperty({
-    description: 'The type of a Budget',
-    default: 'Spesa ricorrente'
-  })
-  @IsNotEmpty()
-  @IsString()
-  type: string;
-
   @ApiProperty({
     description: 'The expenseType of a Budget',
     default: 'INCOME'
   })
   @IsNotEmpty()
   @IsString()
-  expenseType: string;
+  expenseType: ExpenseType
+
+  @IsNotEmpty()
+  @IsString()
+  transactionTime: Date
+  ;
 }
