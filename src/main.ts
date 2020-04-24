@@ -15,10 +15,9 @@ async function server() {
   }));
   app.enableCors();
   const options = new DocumentBuilder()
-    .setTitle('Human CRUD API')
-    .setDescription('Simple human crud api')
+    .setTitle('My budget io')
     .setVersion('1.0')
-    .addTag('Humans')
+    .addTag('my-budget-io')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
