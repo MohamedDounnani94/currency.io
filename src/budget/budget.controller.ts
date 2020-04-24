@@ -17,8 +17,8 @@ export class BudgetController {
   @Post()
   @ApiBody({type: BudgetBodyRequestDto})
   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
-  create(@Body() BudgetBodyRequestDto: BudgetBodyRequestDto ) {
-    return this.budgetService.create(BudgetBodyRequestDto)
+  create(@Body() budgetBodyRequestDto: BudgetBodyRequestDto ) {
+    return this.budgetService.create(budgetBodyRequestDto)
   }
 
   @ApiParam(BudgetIdRequestDto)

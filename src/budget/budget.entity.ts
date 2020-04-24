@@ -14,8 +14,11 @@ export class Budget {
   @Column('varchar')
   name: string;
 
-  @Column('text')
-  description: string;
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  description?: string;
 
   @Column('float')
   amount: number;

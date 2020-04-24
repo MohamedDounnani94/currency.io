@@ -11,8 +11,8 @@ export class BudgetService {
     private budgetsRepository: Repository<Budget>,
   ) {}
 
-  async create(human: IBudget): Promise<Budget> {
-    return this.budgetsRepository.save(human)
+  async create(budget: IBudget): Promise<Budget> {
+    return this.budgetsRepository.save(budget)
   }
   async findAll(): Promise <Budget[]> {
     return this.budgetsRepository.find()
@@ -26,9 +26,9 @@ export class BudgetService {
     await this.budgetsRepository.delete(id)
     return `resource: ${id} successfully deleted`
   }
-
-  async updateById(id: string, human): Promise<Budget> {
-    await this.budgetsRepository.update(id, human)
+  human
+  async updateById(id: string, budget): Promise<Budget> {
+    await this.budgetsRepository.update(id, budget)
     return this.budgetsRepository.findOne(id)
   }
 

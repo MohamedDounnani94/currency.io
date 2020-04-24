@@ -99,4 +99,26 @@ describe('AppController', () => {
       expect(message).toBe(`resource: ${budget.id} successfully deleted`)
     })
   })
+
+  describe('Update Budget by Id', () => {
+    it('should return updated budget', async () => {
+      const budgetController = app.get<BudgetController>(BudgetController);
+      const bodyRequest: BudgetBodyRequestDto = {
+        name: 'Spesa conad',
+        amount: 17.39,
+        expenseType: ExpenseType.EXIT,
+        transactionTime: new Date()
+      }
+
+      const newBodyRequest: BudgetBodyRequestDto = {
+        name: 'Nuova Spesa conad',
+        amount: 17.39,
+        expenseType: ExpenseType.EXIT,
+        transactionTime: new Date()
+      }
+      const budget = await budgetController.create(bodyRequest)
+      const updatedBudget = await budgetController.updateById({id: budget.id}, newBodyRequest)
+      expect(updatedBudget.name === newBodyRequest.name).toBe(true)
+    })
+  })
 });
