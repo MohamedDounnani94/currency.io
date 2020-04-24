@@ -2,7 +2,7 @@ import { ExpenseType } from './budget.entity'
 interface IBudget {
   id?: string,
   name: string,
-  description: string,
+  description?: string,
   amount: number,
   expenseType: ExpenseType,
   transactionTime: Date,

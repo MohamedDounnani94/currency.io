@@ -9,5 +9,5 @@ export default class BudgetIdRequestDto {
   })
   @IsNotEmpty()
   @IsNumberString()
-  id: number;
+  id: string;
 }

@@ -16,7 +16,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
         database: configService.get<string>('postgreSqlDatabase.testDatabase'),
         entities: [Budget],
         synchronize: true,
-        logging: true,
       }),
       inject: [ConfigService],
     })

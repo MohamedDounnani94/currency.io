@@ -16,9 +16,8 @@ export default class BudgetBodyRequestDto {
     description: 'The description of a Budget',
     default: 'Affitto per la camera singola'
   })
-  @IsNotEmpty()
   @IsString()
-  description: string;
+  description?: string;
 
   @ApiProperty({
     description: 'The amount of a Budget',
