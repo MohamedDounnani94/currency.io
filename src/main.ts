@@ -4,9 +4,9 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
-
 async function server() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule)
+  const currencyService = app.get('CurrencyService')
   const config = app.get(ConfigService)
   const port = config.get<number>('port')
   app.useGlobalPipes(new ValidationPipe({
@@ -14,10 +14,13 @@ async function server() {
     transform: true,
   }));
   app.enableCors();
+
+  await currencyService.findAll()
+
   const options = new DocumentBuilder()
-    .setTitle('My budget io')
+    .setTitle('My convert io')
     .setVersion('1.0')
-    .addTag('my-budget-io')
+    .addTag('my-convert-io')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);

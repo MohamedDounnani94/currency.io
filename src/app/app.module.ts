@@ -1,29 +1,29 @@
-import { Module, ValidationPipe } from '@nestjs/common';
+import {HttpModule, Module, ValidationPipe} from '@nestjs/common';
 import { AppController } from './app.controller';
-import { BudgetController } from '../budget/budget.controller';
+import { ConvertController } from '../convert/convert.controller';
 import { AppService } from './app.service';
-import { BudgetService } from '../budget/budget.service';
-import { Connection } from 'typeorm'
-import { BudgetModule } from '../budget/budget.module'
+import { ConvertService } from '../convert/convert.service';
+import { ConvertModule } from '../convert/convert.module'
 import { APP_PIPE } from '@nestjs/core';
-import { DbModule } from '../db/db.module'
 import { ConfigModule } from '@nestjs/config';
 import Configuration from './config/configuration'
+import {CurrencyModule} from "../currency/currency.module";
 
 
 @Module({
   imports: [
-    DbModule,
-    BudgetModule,
+    ConvertModule,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [Configuration]
     }),
+    CurrencyModule,
+    HttpModule,
   ],
-  controllers: [AppController, BudgetController],
+  controllers: [AppController, ConvertController],
   providers: [
     AppService,
-    BudgetService,
+    ConvertService,
     {
       provide: APP_PIPE,
       useClass: ValidationPipe
@@ -31,5 +31,5 @@ import Configuration from './config/configuration'
   ],
 })
 export class AppModule {
-  constructor(private connection: Connection) {}
+  constructor() {}
 }

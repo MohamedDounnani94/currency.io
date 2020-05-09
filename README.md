@@ -1,37 +1,46 @@
 ## Description
 
-[Simple Human CRUD Api] Simple project with NestJS
+[Simple Currency Api] Simple project with NestJS
 
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
+## Ex command to scripts for docker
+
+```bash
+$ chmod +x scripts/up.sh
+$ chmod +x scripts/down.sh
+```
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ yarn run start
 
 # watch mode
-$ npm run start:dev
+$ yarn run start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn run start:prod
+
+# docker production mode
+$ yarn run start:docker
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn run test
 
 # e2e tests
-$ npm run test:e2e
+$ yarn run test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn run test:cov
 ```
 
 ## Api Docs

@@ -1,0 +1,11 @@
+converter.io:
+  image: node:10
+  container_name: converter.io
+  expose:
+    - 80
+  ports:
+    - 3000:3000
+  volumes:
+    - .:/home/node/app
+  working_dir: '/home/node/app'
+  command: yarn start:docker
