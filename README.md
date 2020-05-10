@@ -26,8 +26,11 @@ $ yarn run start:dev
 # production mode
 $ yarn run start:prod
 
-# docker production mode
-$ yarn run start:docker
+# docker up production mode
+$ ./scripts/up.sh
+
+# docker down production mode
+$ ./scripts/down.sh
 ```
 
 ## Test
