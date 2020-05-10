@@ -66,4 +66,19 @@ describe('AppController (e2e)', () => {
         .expect(201)
         .expect({ amount: 0, currency: "SSS"});
   });
+
+    it('/convert (POST) SSS to EUR should return EUR amount to 0 (not found)', async () => {
+        const currencyService = app.get('CurrencyService')
+        await currencyService.findAll()
+        return request(app.getHttpServer())
+            .post('/convert')
+            .send({
+                amount: 12.50,
+                srcCurrency: "SSS",
+                destCurrency: "EUR",
+                referenceDate: "2020-05-08"
+            })
+            .expect(201)
+            .expect({ amount: 0, currency: "EUR"});
+    });
 });
